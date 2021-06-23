@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import UserServices  from '../services/UserServices'
 export default {
   data () {
     return {
