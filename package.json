@@ -6,6 +6,7 @@
   "author": "Gustavo Gil Condezo Camayo <gustavocondezocamayo@gmail.com>",
   "private": true,
   "scripts": {
+    "postinstall": "npm run build",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "build": "quasar build",
