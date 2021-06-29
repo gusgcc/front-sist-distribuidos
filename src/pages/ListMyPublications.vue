@@ -3,9 +3,9 @@
         <q-list bordered separator class="list-my-publications__list">
         <q-item v-for="(publication,index) in listPublications" :key="index" class="">
           <q-item-section top>
-              <q-item-label>{{publication.titulo}}</q-item-label>
-              <q-item-label>{{publication.subtitulo}}</q-item-label>
-              <q-item-label>{{publication.descripcion}}</q-item-label>
+              <h4 style="margin:0;">{{publication.titulo}}</h4>
+              <h5 style="margin:0;">{{publication.subtitulo}}</h5>
+              <p>{{publication.descripcion}}</p>
           </q-item-section>
           <q-item-section side @click="deletePublication(publication._id)" >
             <q-icon name="delete" color="red" size="md" style="cursor:pointer;"></q-icon>

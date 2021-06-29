@@ -8,9 +8,11 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          Title
+          Sistema empleos
         </q-toolbar-title>
-
+        <q-toolbar-title>
+          {{userType == 'USER_POSTULANT' ? 'Usuario Empleado' : 'Usuario Empleador'}}
+        </q-toolbar-title>
         <q-btn dense flat round icon="menu" @click="right = !right" />
       </q-toolbar>
     </q-header>
@@ -19,8 +21,8 @@
         <q-scroll-area class="fit">
           <q-list>
 
-            <template v-for="(menuItem, index) in menuList">
-              <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple :key="index" @click="$router.push(menuItem.to)">
+            <template v-for="(menuItem, index) in menuList" >
+              <q-item v-show="menuItem.userType==userType" clickable :active="menuItem.label === 'Outbox'" v-ripple :key="index" @click="$router.push(menuItem.to)">
                 <q-item-section avatar >
                   <q-icon :name="menuItem.icon" />
                 </q-item-section>
@@ -54,7 +56,7 @@
 </template>
 
 <script>
-import UserServices  from '../services/UserServices'
+import UserServices from '../services/UserServices'
 export default {
   data () {
     return {
@@ -65,13 +67,22 @@ export default {
           icon: 'post_add',
           label: 'Crear Publicacion',
           separator: true,
-          to: 'CreatePublication'
+          to: 'CreatePublication',
+          userType : 'USER_EMPLOYER' 
         },
         {
           icon: 'list_alt',
           label: 'Ver Mis publicaciones',
           separator: false,
-          to: 'ListMyPublications'
+          to: 'ListMyPublications',
+          userType : 'USER_EMPLOYER' 
+        },
+        { 
+          icon: 'list_alt',
+          label: 'Ver empleos',
+          separator: false,
+          to: 'ListAllPublications',
+          userType : 'USER_POSTULANT'
         }
       ]
     }
@@ -82,6 +93,11 @@ export default {
       this.$store.commit('userModule/setUser', null)
       UserServices.setAuthToken(null)
       this.$router.push('/login')
+    }
+  },
+  computed:{
+    userType(){
+      return this.$store.state.userModule.user.tipo
     }
   }
 }

@@ -28,6 +28,13 @@ const routes: RouteConfig[] = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: '/listallpublications',
+        component: () => import('pages/ListAllPublications.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },

@@ -32,5 +32,11 @@ export default {
       method: 'DELETE',
       url: URL + 'publicacion/' + idPublication
     })
+  },
+  async getAllPublication() {
+    return axios({
+      method: 'get',
+      url: URL + "publicacion"
+    })
   }
 }

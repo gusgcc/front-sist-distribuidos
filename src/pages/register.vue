@@ -44,6 +44,9 @@
               </div>
             </q-form>
           </q-card-section>
+          <q-card-section>
+            Ya tiene su cuenta? <a style="cursor:pointer; color:blue" @click="$router.push('/login')">Iniciar Sesion</a>
+          </q-card-section>
         </q-card>
       </q-page>
     </q-page-container>

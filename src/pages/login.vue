@@ -26,6 +26,9 @@
               </div>
             </q-form>
           </q-card-section>
+          <q-card-section>
+            No tienes cuenta? <a style="cursor:pointer; font-weight: bold; color: blue;" @click="$router.push('/register')">Registrate</a>
+          </q-card-section>
         </q-card>
       </q-page>
     </q-page-container>
@@ -53,11 +56,18 @@ export default {
         this.$store.commit('userModule/changeStateAuthenticated', true)
         this.$store.commit('userModule/setUser', response.data.data)
         UserServices.setAuthToken(response.data.data.token)
-                this.$q.notify({
+        this.$q.notify({
           type: 'positive',
           message: 'Bienvenido, ' + response.data.data.email
         })
-        this.$router.push('/listmypublications')
+
+        if(response.data.data.tipo === 'USER_POSTULANT'){
+          this.$router.push('/listallpublications')
+        }else{
+          this.$router.push('/listmypublications')
+        }
+
+
 
       } catch (e) {
           this.$q.notify({
