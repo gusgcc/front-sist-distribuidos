@@ -2,7 +2,6 @@
   <q-page class="list-my-publications">
           <q-input class="list-my-publications__list" clearable filled color="primary" v-model="search" label="Buscar" />
           <br>
-          {{search}}
         <q-card class="list-my-publications__list" v-for="(publication,index) in listPublications" :key="index" >
           <q-card-section top>
               <h4 style="margin:0;">{{publication.titulo}}</h4>
