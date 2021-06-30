@@ -39,7 +39,7 @@ export default {
       url: URL + "publicacion"
     })
   },
-  async searchPublication(data) {
+  async searchPublication(data: any) {
     return axios({
       method: 'get',
       url: URL + "buscarPublicacion/" + data
