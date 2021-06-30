@@ -27,7 +27,8 @@ import PublicationServices from '../services/PublicationServices'
 export default {
   data () {
     return {
-      listPublications: []
+      listPublications: [],
+      search: ''
     }
   },
   async mounted () {

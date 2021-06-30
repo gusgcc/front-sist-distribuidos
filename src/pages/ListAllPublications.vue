@@ -1,5 +1,8 @@
 <template>
   <q-page class="list-my-publications">
+          <q-input class="list-my-publications__list" clearable filled color="primary" v-model="search" label="Buscar" />
+          <br>
+          {{search}}
         <q-card class="list-my-publications__list" v-for="(publication,index) in listPublications" :key="index" >
           <q-card-section top>
               <h4 style="margin:0;">{{publication.titulo}}</h4>
@@ -13,7 +16,7 @@
         <q-card v-if="listPublications.length==0">
           <q-card-section>
             <q-card-label>
-              <h3>Aun No hay publicaciones !!!</h3>
+              <h3>No hay publicaciones !!!</h3>
             </q-card-label>
           </q-card-section>
         </q-card>
@@ -25,16 +28,36 @@ import PublicationServices from '../services/PublicationServices'
 export default {
   data () {
     return {
-      listPublications: []
+      listPublications: [],
+      search: ''
     }
   },
   async mounted () {
     await this.loadPublications()
   },
+  watch: {
+    search: function () {
+      if(this.search==''){
+        this.loadPublications()
+      }else{
+        this.searchPublication(this.search)
+      }
+    }
+  },
   methods: {
     async loadPublications () {
       try {
         const response = await PublicationServices.getAllPublication()
+        console.log('respes', response.data)
+        this.listPublications = response.data.data
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async searchPublication () {
+      console.log('fdsdfd',this.search)
+      try {
+        const response = await PublicationServices.searchPublication(this.search)
         console.log('respes', response.data)
         this.listPublications = response.data.data
       } catch (error) {
