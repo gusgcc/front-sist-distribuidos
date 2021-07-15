@@ -36,9 +36,9 @@ export default {
   },
   watch: {
     search: function () {
-      if(this.search==''){
+      if (this.search == '') {
         this.loadPublications()
-      }else{
+      } else {
         this.searchPublication(this.search)
       }
     }
@@ -54,7 +54,7 @@ export default {
       }
     },
     async searchPublication () {
-      console.log('fdsdfd',this.search)
+      console.log('fdsdfd', this.search)
       try {
         const response = await PublicationServices.searchPublication(this.search)
         console.log('respes', response.data)

@@ -35,6 +35,13 @@ const routes: RouteConfig[] = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: '/editpublication/:idPublication',
+        component: () => import('pages/EditPublication.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },

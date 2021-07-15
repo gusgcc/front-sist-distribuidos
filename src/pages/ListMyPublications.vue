@@ -7,6 +7,9 @@
               <h5 style="margin:0;">{{publication.subtitulo}}</h5>
               <p>{{publication.descripcion}}</p>
           </q-item-section>
+          <q-card-section side @click="editPublication(publication._id)">
+            <q-icon name="edit" color="warning" size="md" style="cursor:pointer;"></q-icon>
+          </q-card-section>
           <q-item-section side @click="deletePublication(publication._id)" >
             <q-icon name="delete" color="red" size="md" style="cursor:pointer;"></q-icon>
           </q-item-section>
@@ -59,6 +62,9 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    async editPublication (idPublication) {
+      this.$router.push('/editpublication/' + idPublication)
     }
   }
 }
