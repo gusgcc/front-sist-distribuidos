@@ -8,5 +8,11 @@ export default {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       data
     })
+  },
+  async getListMyPostulations (idEmpleado:string) {
+    return axios({
+      method: 'GET',
+      url: URL + 'mispostulaciones/' + idEmpleado
+    })
   }
 }

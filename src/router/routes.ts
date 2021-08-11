@@ -42,6 +42,13 @@ const routes: RouteConfig[] = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: '/listpostulations',
+        component: () => import('pages/ListAllPublicationsPostulated.vue'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },

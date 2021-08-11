@@ -68,21 +68,28 @@ export default {
           label: 'Crear Publicacion',
           separator: true,
           to: 'CreatePublication',
-          userType : 'USER_EMPLOYER' 
+          userType: 'USER_EMPLOYER'
         },
         {
           icon: 'list_alt',
           label: 'Ver Mis publicaciones',
           separator: false,
           to: 'ListMyPublications',
-          userType : 'USER_EMPLOYER' 
+          userType: 'USER_EMPLOYER'
         },
-        { 
+        {
           icon: 'list_alt',
           label: 'Ver empleos',
           separator: false,
           to: 'ListAllPublications',
-          userType : 'USER_POSTULANT'
+          userType: 'USER_POSTULANT'
+        },
+        {
+          icon: 'list_alt',
+          label: 'Mis Postulaciones',
+          separator: false,
+          to: '/listpostulations',
+          userType: 'USER_POSTULANT'
         }
       ]
     }
@@ -95,8 +102,8 @@ export default {
       this.$router.push('/login')
     }
   },
-  computed:{
-    userType(){
+  computed: {
+    userType () {
       return this.$store.state.userModule.user.tipo
     }
   }
