@@ -9,7 +9,7 @@
     "postinstall": "npm run build",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "quasar build",
+    "build": "quasar build -m pwa",
     "start": "node server.js"
   },
   "dependencies": {
