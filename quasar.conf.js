@@ -14,7 +14,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/supporting-ts
     supportTS: {
       tsCheckerConfig: {
-        //eslint: true
+        // eslint: true
       }
     },
 
@@ -71,7 +71,7 @@ module.exports = configure(function (/* ctx */) {
 
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack(/* chain */) {
+      chainWebpack (/* chain */) {
         //
       }
     },
@@ -124,9 +124,9 @@ module.exports = configure(function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
-        description: 'A Quasar Framework app',
+        name: 'EASYWORK',
+        short_name: 'EASY WORK',
+        description: 'La plataforma para encontrar empleos.',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -196,7 +196,7 @@ module.exports = configure(function (/* ctx */) {
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration
       nodeIntegration: true,
 
-      extendWebpack(/* cfg */) {
+      extendWebpack (/* cfg */) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       }

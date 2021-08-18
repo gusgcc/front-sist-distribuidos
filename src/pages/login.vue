@@ -21,7 +21,7 @@
               ></q-input>
               <q-toggle v-model="accept" label="Acepto la licencia de terminos." />
               <div>
-                <q-btn color="primary" type="submit" label="Iniciar Sesion">
+                <q-btn color="primary" :loading="loading" type="submit" label="Iniciar Sesion">
                 </q-btn>
               </div>
             </q-form>
@@ -41,6 +41,7 @@ export default {
   // name: 'PageName',
   data () {
     return {
+      loading: false,
       accept: false,
       login: {
         email: '',
@@ -51,6 +52,7 @@ export default {
   methods: {
     async onLogin () {
       try {
+        this.loading = true
         const response = await UserServices.login(this.login)
         console.log(response)
         this.$store.commit('userModule/changeStateAuthenticated', true)
@@ -61,20 +63,19 @@ export default {
           message: 'Bienvenido, ' + response.data.data.email
         })
 
-        if(response.data.data.tipo === 'USER_POSTULANT'){
+        if (response.data.data.tipo === 'USER_POSTULANT') {
           this.$router.push('/listallpublications')
-        }else{
+        } else {
           this.$router.push('/listmypublications')
         }
-
-
-
       } catch (e) {
-          this.$q.notify({
+        this.$q.notify({
           type: 'negative',
-          message: e.response.data.mensaje? e.response.data.mensaje: 'Ocurrio un error.'
+          message: e.response.data.mensaje ? e.response.data.mensaje : 'Ocurrio un error.'
         })
         console.log(e)
+      } finally {
+        this.loading = true
       }
     }
   }

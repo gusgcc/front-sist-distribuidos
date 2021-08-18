@@ -3,17 +3,12 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="left = !left" />
-
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          Sistema empleos
+          EASYWORK
         </q-toolbar-title>
         <q-toolbar-title>
           {{userType == 'USER_POSTULANT' ? 'Usuario Empleado' : 'Usuario Empleador'}}
         </q-toolbar-title>
-        <q-btn dense flat round icon="menu" @click="right = !right" />
       </q-toolbar>
     </q-header>
 
