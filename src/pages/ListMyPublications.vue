@@ -1,15 +1,15 @@
 <template>
   <q-page class="list-my-publications">
-        <q-list bordered separator class="list-my-publications__list">
+    <q-list bordered separator class="list-my-publications__list">
         <q-item v-for="(publication,index) in listPublications" :key="index" class="">
-          <q-item-section top>
-              <h4 style="margin:0;">{{publication.titulo}}</h4>
+          <q-item-section top  @click="showDetail(publication)">
+              <h4 style="margin:0; cursor: pointer"> {{publication.titulo}}</h4>
               <h5 style="margin:0;">{{publication.subtitulo}}</h5>
               <p>{{publication.descripcion}}</p>
           </q-item-section>
-          <q-card-section side @click="editPublication(publication._id)">
+          <q-item-section side @click="editPublication(publication._id)">
             <q-icon name="edit" color="warning" size="md" style="cursor:pointer;"></q-icon>
-          </q-card-section>
+          </q-item-section>
           <q-item-section side @click="deletePublication(publication._id)" >
             <q-icon name="delete" color="red" size="md" style="cursor:pointer;"></q-icon>
           </q-item-section>
@@ -22,16 +22,23 @@
           </q-item-section>
         </q-item>
     </q-list>
+    <detail-my-publication ref="detailPublication" v-if="isVisibleDialogDetail" :publication="dataDetail" @close="isVisibleDialogDetail=false" ></detail-my-publication>
   </q-page>
 </template>
 
 <script>
 import PublicationServices from '../services/PublicationServices'
+import DetailMyPublication from '../components/detailMyPublication'
 export default {
+  components: {
+    'detail-my-publication': DetailMyPublication
+  },
   data () {
     return {
       listPublications: [],
-      search: ''
+      search: '',
+      isVisibleDialogDetail: false,
+      dataDetail: {}
     }
   },
   async mounted () {
@@ -63,8 +70,12 @@ export default {
         console.error(error)
       }
     },
-    async editPublication (idPublication) {
+    editPublication (idPublication) {
       this.$router.push('/editpublication/' + idPublication)
+    },
+    showDetail (publication) {
+      this.isVisibleDialogDetail = true
+      this.dataDetail = publication
     }
   }
 }

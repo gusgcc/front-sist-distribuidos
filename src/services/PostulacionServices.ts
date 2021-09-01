@@ -14,5 +14,11 @@ export default {
       method: 'GET',
       url: URL + 'mispostulaciones/' + idEmpleado
     })
+  },
+  async getListPostulantesByPublicationId (idPublication:string) {
+    return axios({
+      method: 'GET',
+      url: URL + 'postulantes/' + idPublication
+    })
   }
 }
