@@ -43,6 +43,18 @@ export default {
     await this.loadPublications()
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
     this.idUser = this.$store.state.userModule.user.id
+
+    const a = document.createElement('script')
+    a.src = 'https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1'
+    document.head.appendChild(a)
+
+    const n = document.createElement('df-messenger')
+    n.setAttribute('intent', 'Welcome')
+    n.setAttribute('chat-title', 'ChatEasyWork')
+    n.setAttribute('agent-id', '2798bac1-2a7f-43a8-84b7-2bb0b1f84cde')
+    n.setAttribute('language-code', 'es')
+    n.style = 'z-index:1000;'
+    document.body.appendChild(n)
   },
   watch: {
     search: function () {
